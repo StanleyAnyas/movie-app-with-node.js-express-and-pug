@@ -7,6 +7,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 const port = 3001;
 
+// include helmet
+const helmet = require('helmet');
+app.use(helmet());
+
 let movies = [
     {id: '1588323375416', title: 'Star Wars: Episode IX - The Rise of Skywalker', year: 2019, director: 'J.J. Abrams', rating: 6.6},
     {id: '1588323390624', title: 'The Irishman', year: 2019, director: 'Martin Scorsese', rating: 7.9},
@@ -42,5 +46,5 @@ app.post('/addmovie', (request, response) => {
 });
 
 app.listen(process.env.PORT || port, () => {   
-    console.log(`Server listening at http://localhost:${port}`);
+    console.log(`Server listening at http://localhost:${port}/movies`);
 });
